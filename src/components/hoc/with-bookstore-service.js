@@ -10,7 +10,9 @@ const withBookstoreService = () => (Wrapped) => {
       <BookstoreServiceConsumer>
         {
           (bookstoreService) => {
-            <Wrapped {...props} bookstoreService={bookstoreService}/>
+            // bookstoreService вроде как имеется здесь, т.к. мы его в index.js запихнули в BookstoreServiceProvider
+            // bookstoreService это данные с BD
+            return (<Wrapped {...props} bookstoreService={bookstoreService}/>);
           }
         }
       </BookstoreServiceConsumer>
