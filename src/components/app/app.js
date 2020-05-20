@@ -1,11 +1,25 @@
 import React from "react";
-import './app.css'
-import { withBookstoreService } from '../hoc';
+import { Route, Switch } from 'react-router-dom';
+import { HomePage, CartPage } from '../pages';
 
-const App = ({ bookstoreService }) => {
-  console.log(bookstoreService.getBooks());
-  return <div>App</div>
+import './app.css'
+
+const App = () => {
+  return (
+    // Switch делает так, чтоб только один из внутренних роутов сработал
+    <Switch>
+      <Route
+        path="/"
+        component={HomePage}
+        exact />
+
+      <Route
+        path="/cart"
+        component={CartPage} />
+
+    </Switch>
+  )
 };
 
 //после этого в нашем компоненте App сможет появиться prop bookstoreService
-export default withBookstoreService()(App);
+export default App;
